@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const ejs=require('ejs')
 
 class Server {
     constructor() {
@@ -17,16 +18,51 @@ class Server {
     }
 
     routes() {
+        //MEDICO DE CONTROL
         this.app.get('/indexMedicoControl', (req, res) => {
-            res.sendFile(path.join(__dirname, 'public/MedicoControl/indexControl.html'));
+            res.render('MedicoControl/indexControl.ejs');
+        });
+        this.app.get('/CRUDUsuarios', (req, res) => {
+            res.render('MedicoControl/CRUDUsuarios.ejs');
+        });
+        this.app.get('/ControlConsulta', (req, res) => {
+            res.render('MedicoControl/ControlConsulta.ejs');
+        });
+        this.app.get('/Medicos', (req, res) => {
+            res.MedicoControl('MedicoControl/Medicos.ejs');
+        });
+        this.app.get('/Registro', (req, res) => {
+            res.render('MedicoControl/Registro.ejs');
+        });
+        
+        //TODOS
+        this.app.get('/ContactoControl', (req, res) => {
+            res.render('MedicoControl/Contacto.ejs');
         });
 
+        //Medicos Especiales
         this.app.get('/indexMedico', (req, res) => {
-            res.sendFile(path.join(__dirname, 'public/MedicoEspecialista/indexMedico.html'));
+            res.render('MedicosEspeciales/Consultas.ejs');
+        });
+        this.app.get('/ContactoMedico', (req, res) => {
+            res.render( 'MedicosEspeciales/Contacto.ejs');
+        });
+        
+        this.app.get('/ConsultaP', (req, res) => {
+            res.sendFile(path.join(__dirname, 'public/ConsultaP.html'));
+        });
+        
+        
+        this.app.get('/indexPaciente', (req, res) => {
+            res.render('Pacientes/Consulta.ejs');
         });
 
-        this.app.get('/indexPaciente', (req, res) => {
-            res.sendFile(path.join(__dirname, 'public/Pacientes/indexPaciente.html'));
+        this.app.get('/HistorialMedico', (req, res) => {
+            res.render('Pacientes/HistorialMedico.ejs');
+        });
+        //TODOS
+        this.app.get('/ContactoPaciente', (req, res) => {
+            res.render('Pacientes/Contacto.ejs');
         });
     }
 

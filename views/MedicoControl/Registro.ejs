@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Usuarios</title>
+    <link rel="stylesheet" href="/css/styleControl.css">
+</head>
+<body>
+    <div class="Container">
+        <%- include("navbarControl")%>
+        
+        <div class="Consulta">
+            <h1>Registro de Usuario</h1>
+            <form onsubmit="registerUser(event)">
+                <label for="nombre">Nombre completo</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Ingrese su nombre" required>
+
+                <label for="email">Correo electrónico</label>
+                <input type="email" id="email" name="email" placeholder="Ingrese su correo" required>
+
+                <label for="role">Selecciona tu rol:</label>
+                <select id="role" name="role" required>
+                    <option value="medico">Médico</option>
+                    <option value="paciente">Paciente</option>
+                </select>
+
+                <button type="submit">Registrarse</button>
+            </form>
+        </div>
+    </div>    
+    <script>
+        function registerUser(event) {
+            event.preventDefault();
+            alert("Usuario registrado con éxito!");
+        }
+    </script>
+</body>
+</html>

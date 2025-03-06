@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedicoControl</title>
+    <link rel="stylesheet" href="/css/styleMedico.css">
+</head>
+<body>
+    <div class="Container">
+        <%- include("navbarMedico")%>
+        
+        
+            <div class="Bienvenida">
+            <h2>Bienvenido nombre</h2>
+                <div class="Consultas">
+                    <div class="Consulta">
+                        <h2>Paciente 1</h2>
+                        <div>
+                            <p>Dolor de cabeza</p>
+                        </div>
+                        <div class="Operaciones">
+                            <button onclick="window.location.href='/public/ConsultaP.html'">Ver Consulta</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </div>
+        
+</body>
+</html>

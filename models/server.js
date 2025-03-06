@@ -17,16 +17,35 @@ class Server {
     }
 
     routes() {
+        //MEDICO DE CONTROL
         this.app.get('/indexMedicoControl', (req, res) => {
-            res.sendFile(path.join(__dirname, 'public/MedicoControl/indexControl.html'));
+            res.sendFile(path.join(__dirname, 'public/MedicoControl/indexControl.ejs'));
+        });
+        this.app.get('/CRUDUsuarios', (req, res) => {
+            res.sendFile(path.join(__dirname, 'public/CRUDUsuarios.ejs'));
+        });
+        this.app.get('/CRUDUsuarios', (req, res) => {
+            res.sendFile(path.join(__dirname, 'public/indexControl.ejs'));
+        });
+        this.app.get('/Medicos', (req, res) => {
+            res.sendFile(path.join(__dirname, 'public/Medicos.ejs'));
         });
 
+        //Medicos Especiales
         this.app.get('/indexMedico', (req, res) => {
-            res.sendFile(path.join(__dirname, 'public/MedicoEspecialista/indexMedico.html'));
+            res.sendFile(path.join(__dirname, 'public/MedicoEspecialista/Consultas.ejs'));
         });
-
+        
+        
         this.app.get('/indexPaciente', (req, res) => {
-            res.sendFile(path.join(__dirname, 'public/Pacientes/indexPaciente.html'));
+            res.sendFile(path.join(__dirname, 'public/Pacientes/Consulta.ejs'));
+        });
+        this.app.get('/HistorialMedico', (req, res) => {
+            res.sendFile(path.join(__dirname, 'public/Pacientes/HistorialMedico.ejs'));
+        });
+        //TODOS
+        this.app.get('/Contacto', (req, res) => {
+            res.sendFile(path.join(__dirname, 'public/Contacto.ejs'));
         });
     }
 
