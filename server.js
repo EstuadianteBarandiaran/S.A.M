@@ -22,7 +22,7 @@ class Server {
         });
 
         this.app.get('/indexMedico', (req, res) => {
-            res.sendFile(path.join(__dirname, 'public/MedicoEspecialista/indexMedico.html'));
+            res.sendFile(path.join(__dirname, 'public/MedicosEspecializados/indexMedico.html'));
         });
 
         this.app.get('/indexPaciente', (req, res) => {
