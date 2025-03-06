@@ -1,0 +1,16 @@
+{
+  "name": "s.a.m",
+  "version": "1.0.0",
+  "description": "Proyecto creado para Ricarte",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",  
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Shark Thank",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2",
+    "path": "^0.12.7"
+  }
+}

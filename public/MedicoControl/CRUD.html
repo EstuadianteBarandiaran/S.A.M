@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD de Citas Médicas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+        
+        body {
+            background-color: #e2e2e2;
+            font-family: "Poppins", sans-serif;
+            display: flex;
+        }
+        .menu {
+            width: 250px;
+            background-color: #343a40;
+            color: white;
+            padding: 20px;
+            height: 100vh;
+            position: fixed;
+        }
+        .menu img {
+            width: 100px;
+            border-radius: 50%;
+            display: block;
+            margin: 0 auto 10px;
+        }
+        .menu a {
+            color: white;
+            display: block;
+            padding: 10px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .menu a:hover {
+            background-color: #495057;
+        }
+        .content {
+            margin-left: 270px;
+            width: calc(100% - 270px);
+            padding: 40px;
+        }
+        footer {
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu">
+        <img src="https://imgs.search.brave.com/g8Da65YQdfWRs3uO8TyXV3umf5kTvCJABaOjIiaVtFM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTE5/MTE5MzE2OS9lcy9m/b3RvL3JldHJhdG8t/ZGUtdW5hLWpvdmVu/LXNlZ3VyYS1kZS1z/JUMzJUFELW1pc21h/LWVuLWVsLXBhcnF1/ZS5qcGc_cz02MTJ4/NjEyJnc9MCZrPTIw/JmM9Zm5LeHRSdG1N/UnZfLWlKWWVnaVJG/ZjZsOWJrejlMMkVO/MXFvS3pqWDNhcz0" class="perfil">
+        <h3 class="text-center">Nombre Médico Control</h3>
+        <a href="indexControl.html">Inicio</a>
+            <a href="ControlConsulta.html">Control de Consultas</a>
+            <a href="Medicos.html">Medicos</a>
+            <a href="Crud.html">Pacientes</a>
+            <a href="Perfil.html">Perfil</a>
+            <a href="Contacto.html">Contacto</a>
+        </nav>
+    </div>
+
+    <div class="content">
+        <h2 class="mb-4 text-center">Gestión de Usuarios</h2>
+        <div class="mb-3">
+            <input type="text" id="searchInput" class="form-control" placeholder="Buscar usuario..." onkeyup="searchUser()">
+        </div>
+        <table class="table table-striped table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th>Tipo de Usuario</th>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+                </tr>
+            </thead>
+            <tbody id="userTable">
+                <tr>
+                    <td>Paciente</td>
+                    <td>Alondra Lezama</td>
+                    <td>Paciente con control de diabetes</td>
+                    <td><button class="btn btn-outline-info"><i class="bi bi-pencil-square"></i></button></td>
+                    <td><button class="btn btn-outline-danger"><i class="bi bi-trash-fill"></i></button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <footer>
+        © 2025 MedicoControl | Contacto: info@medicocontrol.com | Tel: +52 123 456 7890
+    </footer>
+    
+    <script>
+        function searchUser() {
+            let input = document.getElementById("searchInput").value.toLowerCase();
+            let rows = document.querySelectorAll("#userTable tr");
+            rows.forEach(row => {
+                let text = row.innerText.toLowerCase();
+                row.style.display = text.includes(input) ? "" : "none";
+            });
+        }
+    </script>
+</body>
+</html>
