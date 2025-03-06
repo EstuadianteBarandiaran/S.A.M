@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historial Médico</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="Container">
+        <!-- Menú lateral -->
+        <nav class="Menu">
+            <img class="perfil" src="https://imgs.search.brave.com/g8Da65YQdfWRs3uO8TyXV3umf5kTvCJABaOjIiaVtFM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTE5/MTE5MzE2OS9lcy9m/b3RvL3JldHJhdG8t/ZGUtdW5hLWpvdmVu/LXNlZ3VyYS1kZS1z/JUMzJUFELW1pc21h/LWVuLWVsLXBhcnF1/ZS5qcGc_cz02MTJ4/NjEyJnc9MCZrPTIw/JmM9Zm5LeHRSdG1N/UnZfLWlKWWVnaVJG/ZjZsOWJrejlMMkVO/MXFvS3pqWDNhcz0">
+            <h1>Nombre Paciente</h1>
+            <a href="Consulta.html">Consulta</a>
+            <a href="Historial.html">Historial Médico</a>
+            <a href="Contacto.html">Contacto</a>
+        </nav>
+
+        <!-- Contenido principal -->
+        <div class="content">
+            <h2>Historial Médico</h2>
+
+            <!-- Botones -->
+            <button id="btnAgregarConsulta">Agregar Consulta</button>
+            <button id="btnImprimirReceta">Imprimir Receta</button>
+
+            <!-- Tabla del historial -->
+            <table>
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Motivo</th>
+                        <th>Receta</th>
+                    </tr>
+                </thead>
+                <tbody id="historialBody">
+                    <tr>
+                        <td>2025-03-05</td>
+                        <td>Chequeo general</td>
+                        <td><button class="btnVerReceta" data-receta="Paracetamol 500mg cada 8 hrs">Ver Receta</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Modal para agregar consulta -->
+    <div id="modalAgregar" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Agregar Consulta</h3>
+            <form id="formConsulta">
+                <label for="fecha">Fecha:</label>
+                <input type="date" id="fecha" required>
+                
+                <label for="motivo">Motivo:</label>
+                <input type="text" id="motivo" required>
+                
+                <button type="submit">Guardar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal para ver receta -->
+    <div id="modalReceta" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Receta Médica</h3>
+            <p id="detalleReceta"></p>
+        </div>
+    </div>
+
+    <script>
+        // Modal de Agregar Consulta
+        const modalAgregar = document.getElementById("modalAgregar");
+        const btnAgregar = document.getElementById("btnAgregarConsulta");
+        const closeBtns = document.querySelectorAll(".close");
+
+        btnAgregar.onclick = () => modalAgregar.style.display = "block";
+        closeBtns.forEach(btn => btn.onclick = () => modalAgregar.style.display = "none");
+
+        // Modal de Receta Médica
+        const modalReceta = document.getElementById("modalReceta");
+        const recetaTexto = document.getElementById("detalleReceta");
+
+        document.querySelectorAll(".btnVerReceta").forEach(button => {
+            button.addEventListener("click", function() {
+                recetaTexto.textContent = this.dataset.receta;
+                modalReceta.style.display = "block";
+            });
+        });
+
+        // Cerrar modal de receta
+        document.querySelector("#modalReceta .close").onclick = () => modalReceta.style.display = "none";
+
+        // Evento para guardar consulta en la tabla (solo en frontend por ahora)
+        document.getElementById("formConsulta").addEventListener("submit", function(e) {
+            e.preventDefault();
+            let fecha = document.getElementById("fecha").value;
+            let motivo = document.getElementById("motivo").value;
+
+            let newRow = `<tr>
+                            <td>${fecha}</td>
+                            <td>${motivo}</td>
+                            <td><button class="btnVerReceta" data-receta="Receta pendiente">Ver Receta</button></td>
+                          </tr>`;
+
+            document.getElementById("historialBody").innerHTML += newRow;
+            modalAgregar.style.display = "none";
+        });
+    </script>
+</body>
+</html>
